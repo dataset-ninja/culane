@@ -1,5 +1,23 @@
+The authors presented a large scale challenging **CULane Dataset** for traffic lane detection. Despite the importance and difficulty of traffic lane detection, existing datasets are either too small or too simple, and a large public annotated benchmark is needed to compare different methods. To collect data, they mounted cameras on six different vehicles driven by different drivers and recorded videos during driving in Beijing on different days. More than 55 hours of videos were collected and 133,235 frames were extracted, which is more than 20 times of [TuSimple](https://github.com/TuSimple/tusimple-benchmark) dataset. The authors have divided the dataset into 88880 for training set, 9675 for validation set, and 34680 for test set. These images have a resolution of 1640 × 590.
 
-Sample image template:
-<img src="https://github.com/dataset-ninja/gland-segmentation/assets/78355358/f158d0dd-71d5-41a2-aba5-4a5f57d54c35" alt="image" width="800">
+## Motivation
 
-<span style="font-size: smaller; font-style: italic;">Image description.</span>
+In recent years, autonomous driving has garnered significant attention from both academia and industry. One of the most challenging aspects of autonomous driving is traffic scene understanding, which encompasses computer vision tasks such as lane detection and semantic segmentation. Lane detection is crucial for guiding vehicles and can be used in driver assistance systems, while semantic segmentation provides detailed information about surrounding objects like vehicles and pedestrians. However, these tasks can be extremely challenging in real-world applications due to various harsh conditions, including bad weather, low light, and glare. Additionally, traffic scene understanding often involves handling objects with strong structural characteristics but minimal appearance cues, such as lane markings and poles. These objects typically have long, continuous shapes and can be partially occluded, adding to the complexity of accurate detection and segmentation.
+
+Although CNN-based methods have significantly advanced scene understanding due to their robust representation learning capabilities, they still struggle with objects that have long structural regions and can be occluded, such as lane markings and poles. In contrast, humans can easily infer the positions of these objects and mentally fill in the occluded parts using contextual information from the visible sections.
+
+## Dataset description
+
+The authors presented a large scale challenging dataset for traffic lane detection. Despite the importance and difficulty of traffic lane detection, existing datasets are either too small or too simple, and a large public annotated benchmark is needed to compare different methods. To collect data, cameras were mounted on six different vehicles driven by various drivers, recording videos during drives in Beijing on different days. This effort resulted in over 55 hours of footage, from which 133,235 frames were extracted, making it more than 20 times larger than the TuSimple Dataset. The dataset is divided into 88,880 frames for training, 9,675 for validation, and 34,680 for testing. These images have a resolution of 1640 × 590. As one of the largest and most crowded cities in the world, Beijing offers numerous challenging traffic scenarios for lane detection. The authors categorized the test set into normal conditions and eight challenging scenarios, with the challenging scenarios comprising the majority (72.3%) of the dataset.
+
+<img src="https://github.com/dataset-ninja/culane/assets/120389559/d7dc9c7f-ce9d-4f7e-99d1-c483f78a3fd5" alt="image" width="800">
+
+<span style="font-size: smaller; font-style: italic;">Dataset examples for different scenarios.</span>
+
+For each frame, the authors manually annotated the traffic lanes using cubic splines. In many instances, lane markings are occluded by vehicles or not visible at all. It's crucial for lane detection algorithms to estimate lane positions from context in these challenging scenarios, which occur frequently. Therefore, even in these cases, lanes are annotated based on contextual clues. The authors also aim for their algorithm to distinguish barriers on the road, so lanes on the other side of barriers are not annotated. Their focus is on detecting four key lane markings that are most relevant in real-world applications, leaving other lane markings unannotated.
+
+<img src="https://github.com/dataset-ninja/culane/assets/120389559/5d59735d-08c1-429e-9949-652fa5c66ef8" alt="image" width="800">
+
+<span style="font-size: smaller; font-style: italic;">Proportion of each scenario.</span>
+
+Unlike common object detection tasks that only require bounding boxes, lane detection necessitates precise prediction of curves. A natural approach is for the model to output probability maps (probmaps) of these curves. Therefore, the authors generate pixel-level targets to train the networks, similar to semantic segmentation tasks. Rather than treating all lane markings as a single class and performing clustering afterward, they aim for the neural network to distinguish between different lane markings on its own, which could lead to more robust results. Thus, the four lanes are treated as separate classes.
