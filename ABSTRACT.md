@@ -16,7 +16,7 @@ The authors presented a large scale challenging dataset for traffic lane detecti
 
 For each frame, the authors manually annotated the traffic lanes using cubic splines. In many instances, lane markings are occluded by vehicles or not visible at all. It's crucial for lane detection algorithms to estimate lane positions from context in these challenging scenarios, which occur frequently. Therefore, even in these cases, lanes are annotated based on contextual clues. The authors also aim for their algorithm to distinguish barriers on the road, so lanes on the other side of barriers are not annotated. Their focus is on detecting four key lane markings that are most relevant in real-world applications, leaving other lane markings unannotated.
 
-<img src="https://github.com/dataset-ninja/culane/assets/120389559/5d59735d-08c1-429e-9949-652fa5c66ef8" alt="image" width="800">
+<img src="https://github.com/dataset-ninja/culane/assets/120389559/5d59735d-08c1-429e-9949-652fa5c66ef8" alt="image" width="500">
 
 <span style="font-size: smaller; font-style: italic;">Proportion of each scenario.</span>
 
