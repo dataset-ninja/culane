@@ -1,0 +1,7 @@
+**CULane Dataset** is a dataset for instance segmentation and object detection tasks. It is used in the automotive industry. 
+
+The dataset consists of 14250 images with 43210 labeled objects belonging to 4 different classes including *lane 2*, *lane 3*, *lane 1*, and other: *lane 4*.
+
+Images in the CULane Dataset dataset have pixel-level instance segmentation annotations. Due to the nature of the instance segmentation task, it can be automatically transformed into a semantic segmentation (only one mask for every class) or object detection (bounding boxes for every object) tasks. There are 1233 (9% of the total) unlabeled images (i.e. without annotations). There is 1 split in the dataset: *train* (14250 images). Alternatively, the dataset could be split into 9 challenging categories: ***normal*** (0 instances), ***crowd*** (0 instances), ***hlight*** (0 instances), ***shadow*** (0 instances), ***noline*** (0 instances), ***arrow*** (0 instances), ***curve*** (0 instances), ***cross*** (0 instances), and ***night*** (0 instances). Additionally, every image marked with its ***sequence*** tag. The dataset was released in 2017 by the <span style="font-weight: 600; color: grey; border-bottom: 1px dashed #d3d3d3;">The Chinese University of Hong Kong, China</span> and <span style="font-weight: 600; color: grey; border-bottom: 1px dashed #d3d3d3;">SenseTime Group Limited, China</span>.
+
+<img src="https://github.com/dataset-ninja/culane/raw/main/visualizations/poster.png">
